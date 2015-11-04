@@ -1,11 +1,11 @@
-package sense.com.beeva.labs.sense;
+package sense.com.beeva.labs.sense.dto.iot;
 
 import com.google.gson.annotations.SerializedName;
 
 /**
  * Created by marianclaudiu on 3/11/15.
  */
-public class SensorMeasure {
+public class ReportedPojo {
 
     String humidity, pressure;
     @SerializedName("object_temperature")
@@ -64,7 +64,7 @@ public class SensorMeasure {
 
     @Override
     public String toString() {
-        return "SensorMeasure{" +
+        return "ReportedPojo{" +
                 "humidity='" + humidity + '\'' +
                 ", pressure='" + pressure + '\'' +
                 ", objectTemperature='" + objectTemperature + '\'' +

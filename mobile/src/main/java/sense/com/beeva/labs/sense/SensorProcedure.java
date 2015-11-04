@@ -9,10 +9,12 @@ import com.google.gson.JsonObject;
 import com.google.gson.reflect.TypeToken;
 import com.koushikdutta.async.future.FutureCallback;
 import com.koushikdutta.ion.Ion;
-
 import java.util.HashMap;
 import java.util.Map;
 
+import sense.com.beeva.labs.sense.dto.ContextPojo;
+import sense.com.beeva.labs.sense.dto.ThingPojo;
+import sense.com.beeva.labs.sense.dto.iot.SensorItemsPojo;
 /**
  * Created by marianclaudiu on 3/11/15.
  */
@@ -20,7 +22,7 @@ public class SensorProcedure {
 
     private Context context;
     private SensorCallback sensorCallback;
-    private Thing thing;
+    private ThingPojo thing;
 
     final static Map<String, String> thingMap = new HashMap<String, String>();
 
@@ -47,13 +49,14 @@ public class SensorProcedure {
         Ion.with(context).load(Keys.UBIQONS_HOST + Keys.API_CONTEXT)
                 .addQuery("user_id", userId)
                 .setHeader("Authorization", "Bearer " + Keys.ADMIN_TOKEN)
-                .as(ContextX.class)
-                .setCallback(new FutureCallback<ContextX>() {
+                .as(ContextPojo.class)
+                .setCallback(new FutureCallback<ContextPojo>() {
                     @Override
-                    public void onCompleted(Exception e, ContextX result) {
+                    public void onCompleted(Exception e, ContextPojo result) {
                         if (e == null && result != null && result.getThings() != null && result.getThings().size() > 0) {
-                            for (Thing thingAux : result.getThings()) {
+                            for (ThingPojo thingAux : result.getThings()) {
                                 if ("spot".equals(thingAux.getContextLevel())) {
+                                    thing = thingAux;
                                     getSensorData(thingAux.getThing());
                                     return;
                                 }
@@ -72,11 +75,11 @@ public class SensorProcedure {
         Log.wtf("XXX", json.toString());
         Ion.with(context).load("https://l8mqs9arfh.execute-api.eu-west-1.amazonaws.com/prod/sense-api")
                 .setJsonObjectBody(json)
-                .as(new TypeToken<ExMeasure>(){})
-                .setCallback(new FutureCallback<ExMeasure>() {
+                .as(new TypeToken<SensorItemsPojo>(){})
+                .setCallback(new FutureCallback<SensorItemsPojo>() {
                     @Override
-                    public void onCompleted(Exception e, ExMeasure result) {
-                        if (result != null && result.Items.size() > 0)
+                    public void onCompleted(Exception e, SensorItemsPojo result) {
+                        if (result != null && result.getItems().size() > 0)
                             sensorCallback.onMeasure(thing, result.getItems().get(0));
                     }
                 });

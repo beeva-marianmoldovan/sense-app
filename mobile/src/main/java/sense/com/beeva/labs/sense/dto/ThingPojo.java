@@ -1,11 +1,9 @@
-package sense.com.beeva.labs.sense;
+package sense.com.beeva.labs.sense.dto;
 
 import com.google.gson.annotations.SerializedName;
 
-/**
- * Created by marianclaudiu on 28/09/15.
- */
-public class Thing {
+
+public class ThingPojo {
 
     private String thing;
     @SerializedName("context_level")
@@ -41,7 +39,7 @@ public class Thing {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
 
-        Thing thing1 = (Thing) o;
+        ThingPojo thing1 = (ThingPojo) o;
 
         return !(thing != null ? !thing.equals(thing1.thing) : thing1.thing != null);
 
@@ -54,7 +52,7 @@ public class Thing {
 
     @Override
     public String toString() {
-        return "Thing{" +
+        return "ThingPojo{" +
                 "name='" + name + '\'' +
                 '}';
     }

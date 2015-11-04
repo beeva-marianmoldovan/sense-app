@@ -1,17 +1,17 @@
-package sense.com.beeva.labs.sense;
+package sense.com.beeva.labs.sense.dto.iot;
 
 /**
  * Created by marianclaudiu on 3/11/15.
  */
-public class SuperMeasure {
-    MetaMeasure payload;
+public class ItemPojo {
+    PayloadPojo payload;
     String timestamp, device;
 
-    public MetaMeasure getPayload() {
+    public PayloadPojo getPayload() {
         return payload;
     }
 
-    public void setPayload(MetaMeasure payload) {
+    public void setPayload(PayloadPojo payload) {
         this.payload = payload;
     }
 

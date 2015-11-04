@@ -1,15 +1,15 @@
-package sense.com.beeva.labs.sense;
+package sense.com.beeva.labs.sense.dto;
 
 import com.google.gson.annotations.SerializedName;
 
 import java.util.List;
 
-public class ContextX {
+public class ContextPojo {
 
     @SerializedName("user_id")
     private String userId;
     private String uuid;
-    private List<Thing> things;
+    private List<ThingPojo> things;
 
     public String getUserId() {
         return userId;
@@ -27,11 +27,11 @@ public class ContextX {
         this.uuid = uuid;
     }
 
-    public List<Thing> getThings() {
+    public List<ThingPojo> getThings() {
         return things;
     }
 
-    public void setThings(List<Thing> things) {
+    public void setThings(List<ThingPojo> things) {
         this.things = things;
     }
 

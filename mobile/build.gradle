@@ -19,8 +19,8 @@ android {
     }
 }
 
-repositories{
-    flatDir{
+repositories {
+    flatDir {
         dirs 'libs'
     }
 }
@@ -29,16 +29,19 @@ dependencies {
     compile fileTree(dir: 'libs', include: ['*.jar'])
     wearApp project(':wear')
     testCompile 'junit:junit:4.12'
-    compile(name:'ubiqlibrary', ext:'aar')
-    compile(name:'beacons', ext:'aar')
+    compile(name: 'ubiqlibrary', ext: 'aar')
+    compile(name: 'beacons', ext: 'aar')
     compile 'com.android.support:appcompat-v7:23.1.0'
     compile 'com.google.android.gms:play-services:8.1.0'
-    compile 'com.android.support:design:23.0.1'
-    compile 'com.android.support:cardview-v7:23.0.1'
-    compile 'com.android.support:recyclerview-v7:23.0.1'
+    compile 'com.android.support:design:23.1.0'
+    compile 'com.android.support:cardview-v7:23.1.0'
+    compile 'com.android.support:recyclerview-v7:23.1.0'
     compile 'com.koushikdutta.ion:ion:2.+'
     compile 'com.google.code.gson:gson:2.3'
     compile 'com.jakewharton:butterknife:7.0.1'
     compile 'com.amazonaws:aws-android-sdk-core:2.+'
     compile 'com.amazonaws:aws-android-sdk-cognito:2.+'
+    compile 'com.google.android.gms:play-services-ads:8.1.0'
+    compile 'com.google.android.gms:play-services-identity:8.1.0'
+    compile 'com.google.android.gms:play-services-gcm:8.1.0'
 }
